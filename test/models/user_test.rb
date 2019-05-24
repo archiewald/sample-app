@@ -7,6 +7,12 @@ class UserTest < ActiveSupport::TestCase
       password: "foobar", password_confirmation: "foobar")
   end
 
+  test "without password user is invalid" do
+    user_no_password = User.new(name: "Example User", email: "user@example.com")
+    user_no_password.valid?
+    assert user_no_password.errors.full_messages.include?("Password can't be blank")
+  end
+
   test "should be valid" do
     assert @user.valid?
   end
