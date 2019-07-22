@@ -14,9 +14,5 @@ class SessionsController < ApplicationController
     end
   end
 
-  def current_user
-    User.find_by(id: session[:user_id]) if session[:user_id]
-  end
-
   def destroy; end
 end
